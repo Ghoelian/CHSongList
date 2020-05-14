@@ -8,19 +8,19 @@ const port = 3000
 const raw = fs.readFileSync('songs.json')
 const json = JSON.parse(raw)
 
-const max = 100
+const max = 100 // Max number of entries per page
 
 const paginate = (page, sort) => {
-	const intPage = parseInt(page)
+	const intPage = parseInt(page) // Integer of the current page
 
-	const sorted = sortJson(json, sort)
-	const start = max * intPage
+	const sorted = sortJson(json, sort) // Object array sorted according to the sort variable
+	const start = max * intPage // What absolute index the page should start at
 	const result = []
 
 	for (let i = 0; i < max; i++) {
-		if (i + start < sorted.length) {
-			sorted[i + start].Id = i + start + 1
-			result[i] = sorted[i + start]
+		if (i + start < sorted.length) { // Making sure we don't try to access an index in the array that doesn't exist
+			sorted[i + start].Id = i + start + 1 // Adding an id param to the array, as it is not currently present
+			result[i] = sorted[i + start] // Taking entries form the sorted array, making sure it starts at the actualy starting position of the page and not at 0, and adds it to the result array
 		} else {
 			break
 		}
@@ -34,11 +34,11 @@ const lastPage = (list) => {
 }
 
 app.get('/', (req, res) => {
-	const sort = req.query.sort == undefined ? 'Name' : req.query.sort
-	const page = req.query.page == undefined || req.query.page <= 0 ? 0 : req.query.page
+	const sort = req.query.sort == undefined ? 'Name' : req.query.sort // Setting sort to name if it's undefined from the query params
+	const page = req.query.page == undefined || req.query.page <= 0 ? 0 : req.query.page // Setting page to 0 if it's currently less than 0 or undefined from the query params
 
 	let resHTML = `<button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=0&sort=' + sort}'">First page</button><button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=' + (parseInt(page)-1) + '&sort=' + sort}'">Previous page</button> ${parseInt(page)+1} / ${lastPage(json)+1} <button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=' + (parseInt(page)+1) + '&sort=' + sort}'">Next page</button><button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=' + parseInt(lastPage(json)) + '&sort=' + sort}'">Last page</button><br/><br/>`
-	const songList = paginate(page, sort)
+	const songList = paginate(page, sort) // Returns a paginated and sorted array of objects
 
 	resHTML += `
 		<style>
