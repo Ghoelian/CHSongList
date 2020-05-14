@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 	const sort = req.query.sort == undefined ? 'Name' : req.query.sort
 	const page = req.query.page == undefined || req.query.page <= 0 ? 0 : req.query.page
 
-	let resHTML = `<button onclick="location.href = '${req.protocol + '://' + req.get('host') + '?page=0&sort=' + sort}'">First page</button><button onclick="location.href = '${req.protocol + '://' + req.get('host') + '?page=' + (parseInt(page)-1) + '&sort=' + sort}'">Previous page</button> ${parseInt(page)+1} / ${lastPage(json)+1} <button onclick="location.href = '${req.protocol + '://' + req.get('host') + '?page=' + (parseInt(page)+1) + '&sort=' + sort}'">Next page</button><button onclick="location.href = '${req.protocol + '://' + req.get('host') + '?page=' + parseInt(lastPage(json)) + '&sort=' + sort}'">Last page</button><br/><br/>`
+	let resHTML = `<button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=0&sort=' + sort}'">First page</button><button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=' + (parseInt(page)-1) + '&sort=' + sort}'">Previous page</button> ${parseInt(page)+1} / ${lastPage(json)+1} <button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=' + (parseInt(page)+1) + '&sort=' + sort}'">Next page</button><button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=' + parseInt(lastPage(json)) + '&sort=' + sort}'">Last page</button><br/><br/>`
 	const songList = paginate(page, sort)
 
 	resHTML += `
@@ -50,13 +50,13 @@ app.get('/', (req, res) => {
 		<table>
 			<tr>
 				<th>No.</th>
-				<th><a href='${req.protocol + '://' + req.get('host') + '?page=' + page + '&sort=Name'}'>Name</a></th>
-				<th><a href='${req.protocol + '://' + req.get('host') + '?page=' + page + '&sort=Artist'}'>Artist</a></th>
-				<th><a href='${req.protocol + '://' + req.get('host') + '?page=' + page + '&sort=Album'}'>Album</a></th>
-				<th><a href='${req.protocol + '://' + req.get('host') + '?page=' + page + '&sort=Genre'}'>Genre</a></th>
-				<th><a href='${req.protocol + '://' + req.get('host') + '?page=' + page + '&sort=Charter'}'>Charter</a></th>
-				<th><a href='${req.protocol + '://' + req.get('host') + '?page=' + page + '&sort=Year'}'>Year</a></th>
-				<th><a href='${req.protocol + '://' + req.get('host') + '?page=' + page + '&sort=Playlist'}'>Playlist</a></th>
+				<th><a href='${req.protocol + '://chsonglist.julianvos.nl?page=' + page + '&sort=Name'}'>Name</a></th>
+				<th><a href='${req.protocol + '://chsonglist.julianvos.nl?page=' + page + '&sort=Artist'}'>Artist</a></th>
+				<th><a href='${req.protocol + '://chsonglist.julianvos.nl?page=' + page + '&sort=Album'}'>Album</a></th>
+				<th><a href='${req.protocol + '://chsonglist.julianvos.nl?page=' + page + '&sort=Genre'}'>Genre</a></th>
+				<th><a href='${req.protocol + '://chsonglist.julianvos.nl?page=' + page + '&sort=Charter'}'>Charter</a></th>
+				<th><a href='${req.protocol + '://chsonglist.julianvos.nl?page=' + page + '&sort=Year'}'>Year</a></th>
+				<th><a href='${req.protocol + '://chsonglist.julianvos.nl?page=' + page + '&sort=Playlist'}'>Playlist</a></th>
 			</tr>`
 
 	songList.forEach(song => {
@@ -73,7 +73,7 @@ app.get('/', (req, res) => {
 			</tr>`
 	})
 
-	resHTML += `</table><br/><button onclick="location.href = '${req.protocol + '://' + req.get('host') + '?page=0&sort=' + sort}'">First page</button><button onclick="location.href = '${req.protocol + '://' + req.get('host') + '?page=' + (parseInt(page)-1) + '&sort=' + sort}'">Previous page</button> ${parseInt(page)+1} / ${lastPage(json)+1} <button onclick="location.href = '${req.protocol + '://' + req.get('host') + '?page=' + (parseInt(page)+1) + '&sort=' + sort}'">Next page</button><button onclick="location.href = '${req.protocol + '://' + req.get('host') + '?page=' + parseInt(lastPage(json)) + '&sort=' + sort}'">Last page</button>`
+	resHTML += `</table><br/><button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=0&sort=' + sort}'">First page</button><button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=' + (parseInt(page)-1) + '&sort=' + sort}'">Previous page</button> ${parseInt(page)+1} / ${lastPage(json)+1} <button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=' + (parseInt(page)+1) + '&sort=' + sort}'">Next page</button><button onclick="location.href = '${req.protocol + '://chsonglist.julianvos.nl?page=' + parseInt(lastPage(json)) + '&sort=' + sort}'">Last page</button>`
 	res.send(resHTML)
 })
 
