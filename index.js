@@ -11,11 +11,11 @@ const json = JSON.parse(raw)
 const max = 100 // Max number of entries per page
 
 const paginate = (page, sort) => {
-	const intPage = parseInt(page) // Integer of the current page
+	const intPage = parseInt(page) // Integer of the current page, because javascript is stupid
 
 	const sorted = sortJson(json, sort) // Object array sorted according to the sort variable
 	const start = max * intPage // What absolute index the page should start at
-	const result = []
+	const result = [] // Soon-to-be object array that will hold the paginated result
 
 	for (let i = 0; i < max; i++) {
 		if (i + start < sorted.length) { // Making sure we don't try to access an index in the array that doesn't exist
