@@ -1,17 +1,17 @@
 {
-  "name": "ch_song_list",
-  "version": "0.0.1",
-  "description": "List of my Clone Hero songs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Julian Vos",
-  "license": "ISC",
-  "repository": "https://github.com/Ghoelian/CHSongList",
-  "dependencies": {
-    "express": "^4.17.1",
-    "express-paginate": "^1.0.0",
-    "sort-json-array": "^0.1.7"
-  }
+	"name": "ch_song_list",
+	"version": "0.0.1",
+	"description": "List of my Clone Hero songs",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Julian Vos",
+	"license": "ISC",
+	"repository": "https://github.com/Ghoelian/CHSongList",
+	"dependencies": {
+		"express": "^4.17.1",
+		"express-paginate": "^1.0.0",
+		"sort-json-array": "^0.1.7"
+	}
 }
