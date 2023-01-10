@@ -10,7 +10,7 @@
 	"license": "ISC",
 	"repository": "https://github.com/Ghoelian/CHSongList",
 	"dependencies": {
-		"express": "^4.17.1",
+		"express": "^4.17.3",
 		"express-paginate": "^1.0.0",
 		"sort-json-array": "^0.1.7"
 	}
